@@ -3,7 +3,9 @@ import PokemonCard from "./PokemonCard";
 
 function PokemonsList() {
   return (
-    <section className="ml-1 mr-1  bg-white">
+    <section className=" rounded-lg ml-1 mr-1 pt-4  bg-white flex place-content-around">
+      <PokemonCard />
+      <PokemonCard />
       <PokemonCard />
     </section>
   );
