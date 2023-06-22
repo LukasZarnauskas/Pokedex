@@ -29,6 +29,7 @@ export default {
       },
       width: {
         360: "360px",
+        280: "280px",
       },
     },
   },
