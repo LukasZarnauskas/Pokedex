@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SearchInput from "../components/search/SearchInput";
 import PokemonsList from "../components/search/PokemonsList";
 
 function SearchPage() {
+  const [pokemonArr, setPokemonArr] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0`)
+      .then((resp) => resp.json())
+      .then((dataInJs) => {
+        const pokemonNames = dataInJs.results.map((pokemon) => pokemon.name);
+        setPokemonArr(pokemonNames);
+      })
+      .catch((err) => console.warn(err));
+  }, []);
   return (
     <div>
       <div className="ml-4 mb-6">
@@ -16,7 +27,7 @@ function SearchPage() {
         </h1>
         <SearchInput />
       </div>
-      <PokemonsList />
+      <PokemonsList pokemonArr={pokemonArr} />
     </div>
   );
 }
