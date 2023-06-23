@@ -6,7 +6,7 @@ function SearchPage() {
   const [pokemonArr, setPokemonArr] = useState([]);
 
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0`)
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=898&offset=0`)
       .then((resp) => resp.json())
       .then((dataInJs) => {
         const pokemonNames = dataInJs.results.map((pokemon) => pokemon.name);

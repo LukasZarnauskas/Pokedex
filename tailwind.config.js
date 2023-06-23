@@ -46,7 +46,7 @@ export default {
         8: "8px",
       },
       inset: {
-        66: "66px",
+        60: "60px",
       },
     },
   },
