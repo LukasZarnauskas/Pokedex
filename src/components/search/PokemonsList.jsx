@@ -4,7 +4,7 @@ import PokemonCard from "./PokemonCard";
 function PokemonsList({ pokemonArr }) {
   // console.log(pokemonArr);
   return (
-    <section className=" top rounded-lg ml-1 mr-1 pt-4  bg-white flex place-content-around">
+    <section className=" justify-items-center rounded-lg ml-1 mr-1 pt-4 h-524  bg-white grid grid-cols-3   overflow-y-scroll">
       {pokemonArr.map((pokemon) => (
         <PokemonCard key={pokemon} name={pokemon} />
       ))}

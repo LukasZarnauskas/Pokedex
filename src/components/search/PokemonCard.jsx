@@ -1,7 +1,7 @@
 import React from "react";
 
 function PokemonCard({ name }) {
-  console.log(name);
+  // console.log(name);
 
   return (
     <div className="  rounded-lg border-2 bg-white border-grLight  flex items-center flex-col w-104 mt-2 relative">
