@@ -1,12 +1,12 @@
 import { useFormik } from "formik";
 
-function SearchInput() {
+function SearchInput({ findPokemon }) {
   const formik = useFormik({
     initialValues: {
       search: "",
     },
     onSubmit: (values) => {
-      searchPokemon(values.search);
+      findPokemon(values.search);
     },
   });
   return (
