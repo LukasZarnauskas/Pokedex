@@ -13,6 +13,7 @@ function SearchInput({ findPokemon }) {
     <form
       className="bg-white w-280 pt-1 pb-1 rounded-2xl flex"
       onSubmit={formik.handleSubmit}
+      onChange={formik.handleSubmit}
     >
       <button className="ml-3 mr-2" type="submit">
         <img src="/src/image/search.png" alt="search" />

@@ -4,16 +4,32 @@ import PokemonsList from "../components/search/PokemonsList";
 
 function SearchPage() {
   const [pokemonArr, setPokemonArr] = useState([]);
-
+  const [orgPokemonArr, setOrgPokemonArr] = useState([]);
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon?limit=898&offset=0`)
-      .then((resp) => resp.json())
-      .then((dataInJs) => {
-        const pokemonNames = dataInJs.results.map((pokemon) => pokemon.name);
-        setPokemonArr(pokemonNames);
-      })
-      .catch((err) => console.warn(err));
+    function getData() {
+      return fetch(`https://pokeapi.co/api/v2/pokemon?limit=898&offset=0`)
+        .then((res) => res.json())
+        .then((dataInJs) => {
+          const pokemonNames = dataInJs.results.map((pokemon) => pokemon.name);
+          setPokemonArr(pokemonNames);
+          setOrgPokemonArr(pokemonNames);
+        })
+        .catch((err) => console.log(err));
+    }
+    getData();
   }, []);
+
+  function findPokemon(searchValue) {
+    if (searchValue === "") {
+      setPokemonArr(orgPokemonArr);
+    } else if (searchValue.length > 0) {
+      const filteredPokemon = orgPokemonArr.filter((pokemon) => {
+        return pokemon.includes(searchValue);
+      });
+      return setPokemonArr(filteredPokemon);
+    }
+  }
+
   return (
     <div>
       <div className="ml-4 mb-6">
@@ -22,10 +38,12 @@ function SearchPage() {
             className="mr-4 h-6 "
             src="/src/image/Pokeball.png"
             alt="pokeball "
-          />{" "}
+          />
           Pokédex
         </h1>
-        <SearchInput />
+        <div>
+          <SearchInput findPokemon={findPokemon} />
+        </div>
       </div>
       <PokemonsList pokemonArr={pokemonArr} />
     </div>
