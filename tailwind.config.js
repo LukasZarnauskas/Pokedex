@@ -48,6 +48,7 @@ export default {
       inset: {
         60: "60px",
       },
+      padding: { 9: "9px" },
     },
   },
   plugins: [],
