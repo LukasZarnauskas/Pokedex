@@ -20,8 +20,8 @@ function PokemonCard({ name }) {
   }, []);
 
   return (
-    <Link to={`/pokemon/${pokeInfo.id}`}>
-      <div className="  rounded-lg border-2 bg-white border-grLight  flex items-center flex-col h-fit w-104 mt-2 relative">
+    <Link to={`/pokemon/${pokeInfo.id}`} state={{ info: pokeInfo }}>
+      <div className=" hover:shadow-grMedium hover:shadow-sm  rounded-lg border-2 bg-white border-grLight  flex items-center flex-col h-fit w-104 mt-2 relative">
         <p className=" mr-2 self-end text-8 ">#{pokeInfo.id}</p>
         <img
           className=" w-72 h-72 z-20"
