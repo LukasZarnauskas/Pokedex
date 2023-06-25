@@ -6,9 +6,10 @@ function SearchPage() {
   const [pokemonArr, setPokemonArr] = useState([]);
   const [orgPokemonArr, setOrgPokemonArr] = useState([]);
   const [sortToggle, setSortToggle] = useState(false);
+  const [sortBy, setSortBy] = useState("id");
   useEffect(() => {
     function getData() {
-      return fetch(`https://pokeapi.co/api/v2/pokemon?limit=898&offset=0`)
+      return fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`)
         .then((res) => res.json())
         .then((dataInJs) => {
           const pokemonNames = dataInJs.results.map((pokemon) => pokemon.name);
@@ -24,7 +25,7 @@ function SearchPage() {
     if (searchValue === "") {
       setPokemonArr(orgPokemonArr);
     } else if (searchValue.length > 0) {
-      const filteredPokemon = orgPokemonArr.filter((pokemon) => {
+      const filteredPokemon = pokemonArr.filter((pokemon) => {
         return pokemon.includes(searchValue);
       });
       return setPokemonArr(filteredPokemon);
@@ -33,7 +34,19 @@ function SearchPage() {
   function handleClick() {
     setSortToggle(!sortToggle);
   }
-  console.log(sortToggle);
+  function handleChange(event) {
+    setSortBy(event.target.value);
+    sortPokemon(event.target.value);
+  }
+  function sortPokemon() {
+    if (sortBy === "id") {
+      setPokemonArr([...orgPokemonArr]);
+    } else if (sortBy === "name") {
+      const sortedPokemon = [...pokemonArr].sort();
+      setPokemonArr(sortedPokemon);
+    }
+  }
+
   return (
     <div className="relative">
       <div className="ml-4 mb-6">
@@ -53,21 +66,21 @@ function SearchPage() {
                 <p className="text-xs mb-1">Sort by:</p>
                 <div className="flex mb-1">
                   <input
-                    onClick={handleClick}
                     type="radio"
                     name="sortBy"
                     id="id"
                     value="id"
+                    onChange={handleChange}
                   />
                   <label htmlFor="id">Number</label>
                 </div>
                 <div className="flex">
                   <input
-                    onClick={handleClick}
                     type="radio"
                     name="sortBy"
                     id="name"
                     value="name"
+                    onChange={handleChange}
                   />
                   <label htmlFor="name">Name</label>
                 </div>
@@ -83,7 +96,7 @@ function SearchPage() {
           </form>
         </div>
       </div>
-      <PokemonsList pokemonArr={pokemonArr} />
+      <PokemonsList pokemonArr={pokemonArr} sortBy={sortBy} />
     </div>
   );
 }

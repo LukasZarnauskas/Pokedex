@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function PokemonCard({ name }) {
+function PokemonCard({ name, sortBy }) {
   // console.log(name);
   const [pokeInfo, setPokeInfo] = useState({});
   useEffect(() => {
@@ -19,6 +19,7 @@ function PokemonCard({ name }) {
     };
     fetchData();
   }, []);
+
   return (
     <div className="  rounded-lg border-2 bg-white border-grLight  flex items-center flex-col h-fit w-104 mt-2 relative">
       <p className=" mr-2 self-end text-8 ">#{pokeInfo.id}</p>
