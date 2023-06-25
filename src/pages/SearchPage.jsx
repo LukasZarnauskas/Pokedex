@@ -41,7 +41,6 @@ function SearchPage() {
       setPokemonArr(sortedPokemon);
     }
   }
-  console.log(toogle);
   return (
     <div className="relative">
       <div className="ml-4 mb-6">
