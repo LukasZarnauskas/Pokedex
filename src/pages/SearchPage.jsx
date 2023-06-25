@@ -5,7 +5,7 @@ import PokemonsList from "../components/search/PokemonsList";
 function SearchPage() {
   const [pokemonArr, setPokemonArr] = useState([]);
   const [orgPokemonArr, setOrgPokemonArr] = useState([]);
-  const [sortToggle, setSortToggle] = useState(false);
+  const [changeToggle, setChangeToggle] = useState(false);
   const [sortBy, setSortBy] = useState("id");
   useEffect(() => {
     function getData() {
@@ -32,7 +32,7 @@ function SearchPage() {
     }
   }
   function handleClick() {
-    setSortToggle(!sortToggle);
+    setChangeToggle(!changeToggle);
   }
   function handleChange(event) {
     setSortBy(event.target.value);
@@ -61,7 +61,7 @@ function SearchPage() {
         <div className="flex items-center ">
           <SearchInput findPokemon={findPokemon} />
           <form className="bg-white rounded-full  ml-3 mr-1 ">
-            {sortToggle ? (
+            {changeToggle ? (
               <fieldset className="absolute top-12 right-px text-10 mb bg-primaryColor text-white mr-1  ">
                 <p className="text-xs mb-1">Sort by:</p>
                 <div className="flex mb-1">
@@ -70,6 +70,7 @@ function SearchPage() {
                     name="sortBy"
                     id="id"
                     value="id"
+                    onClick={handleClick}
                     onChange={handleChange}
                   />
                   <label htmlFor="id">Number</label>
@@ -80,17 +81,25 @@ function SearchPage() {
                     name="sortBy"
                     id="name"
                     value="name"
+                    onClick={handleClick}
                     onChange={handleChange}
                   />
                   <label htmlFor="name">Name</label>
                 </div>
               </fieldset>
-            ) : (
+            ) : sortBy === "id" ? (
               <p
                 onClick={handleClick}
                 className="text-primaryColor text-center px-9 py-1 rounded-full cursor-pointer"
               >
                 #
+              </p>
+            ) : (
+              <p
+                onClick={handleClick}
+                className="text-primaryColor text-center px-2.5 py-1 rounded-full cursor-pointer"
+              >
+                A
               </p>
             )}
           </form>
