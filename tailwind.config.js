@@ -40,6 +40,7 @@ export default {
       height: {
         72: "72px",
         524: "524px",
+        648: "648px",
       },
       fontSize: {
         10: "10px",

@@ -162,7 +162,7 @@ function PokemonPage() {
   }
   console.log(description);
   return (
-    <div className={`pb-1 ${color}`}>
+    <div className={`pb-1 ${color} h-648`}>
       <div className="  flex justify-between items-center text-white mx-6 pt-5">
         <div className="flex items-center">
           <Link to={"/"}>
@@ -180,7 +180,7 @@ function PokemonPage() {
         }
         alt="pokemon"
       />
-      <div className="bg-white mx-1 mb-1 rounded-lg">
+      <div className="bg-white mx-1 mb-1 rounded-lg h-96">
         <div className=" text-white capitalize font-bold text-10 flex justify-center gap-3">
           <p className={`rounded-lg mt-2  px-3 ${color}`}>
             {info.types[0]?.type.name}
