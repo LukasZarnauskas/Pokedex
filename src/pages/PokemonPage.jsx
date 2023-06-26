@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Composition from "../components/search/pokemonPage/Composition";
 
 function PokemonPage() {
+  const [description, setdescription] = useState({});
   const location = useLocation();
   const { info } = location.state;
+  useEffect(() => {
+    function getCharacteristic() {
+      return fetch(`https://pokeapi.co/api/v2/pokemon-species/${info.id}/`)
+        .then((res) => res.json())
+        .then((dataInJs) => {
+          setdescription(dataInJs.flavor_text_entries[0].flavor_text);
+        })
+        .catch((err) => console.log(err));
+    }
+    getCharacteristic();
+  }, []);
 
   let color = "";
   let colorOfText = "";
@@ -147,8 +159,6 @@ function PokemonPage() {
       color2 = "";
       break;
   }
-  const textColor = `text-${color.slice(3)}`;
-  console.log(textColor);
   return (
     <div className={`pb-1 ${color}`}>
       <div className="  flex justify-between items-center text-white mx-6 pt-5">
@@ -183,6 +193,7 @@ function PokemonPage() {
           About
         </h2>
         <Composition info={info} />
+        <p className="mt-4 text-10">{description}</p>
       </div>
     </div>
   );
