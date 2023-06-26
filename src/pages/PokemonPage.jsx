@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Composition from "../components/search/pokemonPage/Composition";
+import BaseStats from "../components/search/pokemonPage/BaseStats";
 
 function PokemonPage() {
-  const [description, setdescription] = useState({});
+  const [description, setdescription] = useState("");
   const location = useLocation();
   const { info } = location.state;
   useEffect(() => {
@@ -159,6 +160,7 @@ function PokemonPage() {
       color2 = "";
       break;
   }
+  console.log(description);
   return (
     <div className={`pb-1 ${color}`}>
       <div className="  flex justify-between items-center text-white mx-6 pt-5">
@@ -193,7 +195,13 @@ function PokemonPage() {
           About
         </h2>
         <Composition info={info} />
-        <p className="mt-4 text-10">{description}</p>
+        <p className=" my-4 mx-5 text-10 text-center text-grDark">
+          {description}
+        </p>
+        <h2 className={`text-sm mt-4 text-center font-bold ${colorOfText} `}>
+          Base Stats
+        </h2>
+        <BaseStats info={info} color={color} colorOfText={colorOfText} />
       </div>
     </div>
   );
