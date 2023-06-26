@@ -166,7 +166,7 @@ function PokemonPage() {
       <div className="  flex justify-between items-center text-white mx-6 pt-5">
         <div className="flex items-center">
           <Link to={"/"}>
-            <img src="/src/image/arrow_back.png" alt="arrow" />
+            <img src="/image/arrow_back.png" alt="arrow" />
           </Link>
           <h1 className="capitalize text-2xl">{info.forms[0].name}</h1>
         </div>

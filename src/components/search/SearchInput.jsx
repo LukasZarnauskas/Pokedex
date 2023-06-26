@@ -16,7 +16,7 @@ function SearchInput({ findPokemon }) {
       onChange={formik.handleSubmit}
     >
       <button className="ml-3 mr-2" type="submit">
-        <img src="/src/image/search.png" alt="search" />
+        <img src="/image/search.png" alt="search" />
       </button>
       <input
         className="border-none w-56  focus:outline-none"
