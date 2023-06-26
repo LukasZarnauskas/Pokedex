@@ -8,7 +8,7 @@ function SearchPage() {
   const [toogle, setToggle] = useState(true);
   useEffect(() => {
     function getData() {
-      return fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`)
+      return fetch(`https://pokeapi.co/api/v2/pokemon?limit=386&offset=0`)
         .then((res) => res.json())
         .then((dataInJs) => {
           const pokemonNames = dataInJs.results.map((pokemon) => pokemon.name);
