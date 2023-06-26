@@ -3,8 +3,6 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 function BaseStats({ info }) {
-  console.log(info);
-
   const [skillSet, setskillSet] = useState({
     labels: ["HP", "ATK", "DEF", "SATK", "SDEF", "SPD"],
     datasets: [
@@ -31,18 +29,6 @@ function BaseStats({ info }) {
     },
   });
 
-  //   const options = {
-  //     legend: {
-  //       display: false,
-  //     },
-  //     tooltips: {
-  //       callbacks: {
-  //         label: function (tooltipItem) {
-  //           return tooltipItem.yLabel;
-  //         },
-  //       },
-  //     },
-  //   };
   return (
     <div className="mx-5">
       <Bar data={skillSet} options={skillSet.options} />

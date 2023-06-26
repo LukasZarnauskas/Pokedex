@@ -4,7 +4,7 @@ import "./assets/App.css";
 import PokemonPage from "./pages/PokemonPage";
 function App() {
   return (
-    <div className="w-360   font-poppins">
+    <div className="w-360 mx-auto  font-poppins">
       <Routes>
         <Route path="/" element={<SearchPage />} />
         <Route path="/pokemon/:id" element={<PokemonPage />}></Route>

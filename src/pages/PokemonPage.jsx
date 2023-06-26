@@ -160,9 +160,9 @@ function PokemonPage() {
       color2 = "";
       break;
   }
-  console.log(description);
+
   return (
-    <div className={`pb-1 ${color} h-648`}>
+    <div className={`pb-1 ${color} h-648 rounded-xl`}>
       <div className="  flex justify-between items-center text-white mx-6 pt-5">
         <div className="flex items-center">
           <Link to={"/"}>
