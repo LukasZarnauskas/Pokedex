@@ -42,7 +42,7 @@ function SearchPage() {
     }
   }
   return (
-    <div className="relative bg-primaryColor">
+    <div className="relative pb-1 bg-primaryColor">
       <div className="ml-4 mb-6">
         <h1 className=" pt-5 pb-3 flex items-center text-2xl font-bold  text-white">
           <img
