@@ -1,7 +1,5 @@
-1. npm create vite
-2. npm install
-3. npm run dev
+# Start
+1. npm install
+2. npm run dev
 
-## 2. Install Tailwind CSS
-
-1. npm install -D tailwindcss
+Website: https://app.netlify.com/sites/pokedexlukas/configuration/general
